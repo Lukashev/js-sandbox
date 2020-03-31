@@ -1,0 +1,10 @@
+{
+  "name": "js-sandbox",
+  "version": "1.0.0",
+  "description": "Repository which helps you to build your own components based on given examples",
+  "main": "index.js",
+  "author": "Nikita Lukashev",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {}
+}

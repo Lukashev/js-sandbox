@@ -1,0 +1,13 @@
+.block {
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: aqua;
+  width: 100%;
+  max-width: 260px;
+  padding: 5px 10px;
+}
+
+.block:hover {
+  cursor: pointer;
+}
