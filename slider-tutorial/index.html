@@ -1,0 +1,37 @@
+<!-- https://oboi.ws/wallpapers/17_12338_oboi_firewatch_1920x1080.jpg -->
+<!-- https://oboi.ws/wallpapers/17_12401_oboi_zelenyj_firewatch_1920x1080.jpg -->
+<!-- https://i.pinimg.com/originals/83/7f/9f/837f9f1f2e4d15c7e6d0d6c109ab9a0a.jpg -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider Example</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="slider__container">
+    <div class="content">
+      <img class="slider-item" src="https://oboi.ws/wallpapers/17_12338_oboi_firewatch_1920x1080.jpg" alt="image">
+      <img class="slider-item" src="https://oboi.ws/wallpapers/17_12401_oboi_zelenyj_firewatch_1920x1080.jpg"
+        alt="image">
+      <img class="slider-item" src="https://i.pinimg.com/originals/83/7f/9f/837f9f1f2e4d15c7e6d0d6c109ab9a0a.jpg"
+        alt="image">
+    </div>
+    <div class="slider__control">
+      <div class="slider__control-item prev"></div>
+      <div class="slider__control-item next"></div>
+    </div>
+    <div class="slider__dots"></div>
+  </div>
+
+  <script src="slider.js"></script>
+  <script>
+    new Slider(0, { autoPlay: true })
+  </script>
+</body>
+
+</html>
