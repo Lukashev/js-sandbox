@@ -185,7 +185,7 @@ class Calculator {
     if (symbol === '÷') _symbol = '/'
 
     if (symbol !== '=') this.result += _symbol
-    else this.result = eval(this.result)
+    else this.result = Number(eval(this.result)).toFixed(3)
     this._clearRect()
   }
 
