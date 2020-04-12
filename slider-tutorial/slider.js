@@ -75,7 +75,6 @@ class Slider {
       if (slideIndex !== undefined) {
         this.slideIndex = slideIndex
       } else {
-        console.log(controlIndex)
         switch (controlIndex) {
           case 0:
             this.slideIndex = this.slideIndex - 1
