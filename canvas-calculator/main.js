@@ -26,7 +26,6 @@ class Calculator {
     this.height = height
 
     this.result = 0
-    this.queue = []
 
     this.options = options || {
       padding: width / 15,
@@ -144,7 +143,7 @@ class Calculator {
           const { coords: { x1, x2, y1, y2 } } = elem
           return x >= x1 && x <= x2 && y >= y1 && y <= y2
         })
-      
+
       if (button) {
         const { label, type } = button
 
@@ -158,22 +157,27 @@ class Calculator {
           case 'number':
             this._btnNumberClick(label)
           default:
-            return    
+            return
         }
-      }  
+      }
 
     })
   }
 
   _btnSpecialClick(symbol) {
     const { _clearRect } = this
-    switch(symbol) {
+    switch (symbol) {
       case 'AC':
         this.result = 0
-        this.queue = []
-        break;
+        break
+      case '+/-':
+        /* TODO */
+        break
+      case '%':
+        /* TODO */
+        break  
       default:
-        return  
+        return
     }
     _clearRect.call(this)
   }
@@ -184,8 +188,12 @@ class Calculator {
     if (symbol === 'x') _symbol = '*'
     if (symbol === '÷') _symbol = '/'
 
-    if (symbol !== '=') this.result += _symbol
-    else this.result = Number(eval(this.result)).toFixed(3)
+    if (symbol !== '=') {
+      this.result += _symbol
+    } else {
+      const value = Number(eval(this.result))
+      this.result = value.toFixed(value % 1 !== 0 ? 2 : 0)
+    }
     this._clearRect()
   }
 
