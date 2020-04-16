@@ -18,6 +18,7 @@ class Slider {
       options : { delay }, 
       changeSlideIndex
     } = this
+    this.renderSlider()
     this.interval = setInterval(() => {
       changeSlideIndex.call(this, 1)()
     }, delay || 3000)
@@ -29,7 +30,12 @@ class Slider {
   }
 
   renderSlider() {
-    const { slideIndex, sliderItems, dotContainer } = this
+    const { 
+      slideIndex, 
+      sliderItems, 
+      dotContainer,
+      options: { fade = true } 
+    } = this
     // first, hide all slides
     for (let i = 0; i < sliderItems.length; i++)
       sliderItems[i].style.opacity = '0'

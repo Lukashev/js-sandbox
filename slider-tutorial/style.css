@@ -76,3 +76,14 @@
 .slider__dots-item.active {
   background-color: gray;
 }
+
+/* fade off */
+
+.slider__control-item.fade-off {
+  position: relative;
+}
+
+.slider__container .content.fade-off {
+  display: flex;
+  height: 100%;
+}

@@ -6,5 +6,11 @@
   "author": "Nikita Lukashev",
   "license": "MIT",
   "private": false,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "dev": "nodemon --watch index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
 }
