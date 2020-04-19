@@ -1,0 +1,17 @@
+{
+  "name": "stream_sandbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Nikita Lukashev",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "nodemon --watch index.js",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.3"
+  }
+}

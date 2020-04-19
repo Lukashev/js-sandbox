@@ -7,15 +7,33 @@ class Slider {
     this.sliderItems = document.getElementsByClassName('slider-item')
     this.controlItems = document.getElementsByClassName('slider__control-item')
     this.dotContainer = document.querySelector('.slider__dots')
+
     this.initControls()
     options.autoPlay
       ? this.runAutoPlay()
       : this.renderSlider()
+
+    this.throttle = _throttle(this.renderSlider.bind(this), 300) 
+
+    if (!this.options.fade)
+      this.setupResizeListener() 
+    
+  }
+
+  setupResizeListener() {
+    const { throttle } = this
+    window.addEventListener('resize', () => {
+      throttle()
+    })
+  }
+
+  getSliderContent() {
+    return document.querySelector('.slider__container .content')
   }
 
   runAutoPlay() {
-    const { 
-      options : { delay }, 
+    const {
+      options: { delay },
       changeSlideIndex
     } = this
     this.renderSlider()
@@ -23,30 +41,46 @@ class Slider {
       changeSlideIndex.call(this, 1)()
     }, delay || 3000)
     document
-    .querySelector('.slider__container')
-    .addEventListener('mouseover', () => {
-      clearInterval(this.interval)
-    })
+      .querySelector('.slider__container')
+      .addEventListener('mouseover', () => {
+        clearInterval(this.interval)
+      })
   }
 
   renderSlider() {
-    const { 
-      slideIndex, 
-      sliderItems, 
+    const {
+      slideIndex,
+      sliderItems,
       dotContainer,
-      options: { fade = true } 
+      options: { fade = true }
     } = this
     // first, hide all slides
-    for (let i = 0; i < sliderItems.length; i++)
-      sliderItems[i].style.opacity = '0'
 
     if (slideIndex === -1)
       this.slideIndex = sliderItems.length - 1
     if (slideIndex > sliderItems.length - 1)
       this.slideIndex = 0
 
-    sliderItems[this.slideIndex]
-      .style.opacity = '1'
+    if (fade) {
+      for (let i = 0; i < sliderItems.length; i++)
+        sliderItems[i].style.opacity = '0'
+
+      sliderItems[this.slideIndex]
+        .style.opacity = '1'
+    } else {
+
+      const contentBlock = this.getSliderContent()
+
+      contentBlock.classList.add('fade-off')
+
+      for (let i = 0; i < sliderItems.length; i++) {
+        sliderItems[i].classList.add('fade-off')
+      }
+
+      const step = contentBlock.clientWidth
+
+      contentBlock.style.left = `-${step * this.slideIndex}px`
+    }
 
     const dotItems = dotContainer.childNodes
 
