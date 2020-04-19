@@ -5,7 +5,7 @@ const {
   anagram
 } = require('../index')
 
-describe('Find Vowels', function() {
+describe('Stream Sandbox', function() {
   it('find vowels', function() {
     assert.equal(findVowels('Alabama'), 4)
   }) 
