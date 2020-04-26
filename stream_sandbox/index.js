@@ -55,11 +55,27 @@ function sum(arr) {
   }, 0)
 }
 
+function reverseArray(arr = []) {
+  return arr.reduce((acc, _, i) => {
+    return acc.concat(arr[arr.length - 1 - i])
+  }, [])
+}
+
+function reverseArrayInPlace(arr) {
+  const tmpLength = arr.length 
+  for (let i = 0; i < tmpLength; i++) {
+    arr[tmpLength + i] = arr[tmpLength - 1 - i]
+  }
+  arr.splice(0, tmpLength)
+}
+
 module.exports = {
   fibonacci,
   anagram,
   findVowels,
   range,
-  sum
+  sum,
+  reverseArray,
+  reverseArrayInPlace
 }
 
